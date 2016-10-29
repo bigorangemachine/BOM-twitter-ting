@@ -4,7 +4,13 @@
   "description": "Twitter Thing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"NO TEST\""
+    "preinstall": "mkdir -p _cache/ && chmod 777 _cache/",
+    "install": "node install.js",
+    "start": "node index.js",
+    "cron": "echo \"\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\nCreating crontab under '$(whoami)'\\n\\nIf you wish to run a cron under a different user use: 'sudo -u not$(whoami) npm run cron'.\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\n\" && node cron-init.js whichnode=$(which node) cronfile=cron.job && crontab cron.job && echo CRONTAB CREATED FOR $(whoami) && echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ && crontab -l && echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "uncron": "echo \"\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\nRemoving crontab under '$(whoami)'\\n\\nIf you wish to remove a cron under a different user use: 'sudo -u not$(whoami) npm run cron'.\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\n\" && node cron-init.js -doremove whichnode=$(which node) cronfile=cron.job && echo CRONTAB REMOVING FOR $(whoami) && if crontab -l; then echo 'YES'; fi; echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ && if crontab -r; then echo 'REMOVED'; fi; rm cron.job && echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ && if crontab -l; then echo ''; fi; ",
+    "uninstall": "echo NO UNINSTALL",
+    "test": "wget http://ipinfo.io/ip --tries 5 -qO _cache/ip.settings && echo \"$(date +%s)\" >> _cache/ip.settings && node test.js -silent"
   },
   "repository": {
     "type": "git",
@@ -24,7 +30,8 @@
     "GenDB": "git://github.com/bigorangemachine/BOM-genDB.git#v0.0.3",
     "Pourtals": "git://github.com/bigorangemachine/BOM-Pourtals.js.git#v0.0.3",
     "bom-utils": "git://github.com/bigorangemachine/BOM-nodejs-utils.git#v0.0.4",
+    "mysql": "^2.11.1",
     "string.prototype.repeat": "^0.2.0",
-    "mysql": "^2.11.1"
+    "underscore": "^1.8.3"
   }
 }
