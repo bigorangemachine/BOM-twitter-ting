@@ -1,13 +1,24 @@
 
 
-CREATE TABLE `watching_criteria`(
+CREATE TABLE `criteria_types`(
 	`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 	`query_type` CHAR(255) NOT NULL,
-	`query_val` CHAR(255) NOT NULL,
     FULLTEXT `query_type` (`query_type`),
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `id` (`id`)
 )ENGINE = MyISAM;
+
+
+CREATE TABLE `watching_criteria`(
+	`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+	`query_val` CHAR(255) NOT NULL,
+	`criteria_type_id` bigint(20) unsigned NOT NULL,
+	INDEX `criteria_type_id` (`criteria_type_id`),
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `id` (`id`)
+)ENGINE = MyISAM;
+
+
 
 
 CREATE TABLE `secondary_table`(
