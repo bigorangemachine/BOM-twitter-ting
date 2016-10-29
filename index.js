@@ -37,8 +37,32 @@ var c0redP=require('Pourtals')(),
         process.exit();//nothing happens after this - except the event hadler
     });
 
-//rootThread._SCOPE_.large_queue['start'].setPool
-
+var mysql_conn={};
+// INIT CALLBACKS!
+rootThread.on('init',function(pkg,flagPosFunc,flagNegFunc){
+    if(!config || config.db.type.toLowerCase()!=='mysql'){console.error('ONLY DEVELOPED FOR MYSQL');rootThread.do_exit();flagNegFunc();}
+    if(!root_params.silent){console.log('rootThread DB SETTINGS: ',merge(true,{},config.db,{'user':vars.const_str.omitted,'pass':vars.const_str.omitted}));}
+    mysql_conn = mysql.createConnection({
+            //'debug':true,
+            'database':config.db.db,
+            'host': config.db.host,
+            'user': config.db.user,
+            'password': config.db.pass
+        });
+    mysql_conn.version=config.db.version;
+    flagPosFunc();
+});
+rootThread.on('init',function(pkg,flagPosFunc,flagNegFunc){
+    console.log("[rootThread] MYSQL CONNECTION ATTEMPT");
+    var connect_result=mysql_conn.connect(function(err){
+        if(err){
+            if(!root_params.silent){console.log("[rootThread] MYSQL CONNECTION ERROR ",err);}
+            return flagNegFunc.apply(null,utils.convert_args(arguments));
+        }
+        return flagPosFunc.apply(null,utils.convert_args(arguments));
+    });
+    return connect_result;
+});
 rootThread.on('start',function(pkg,flagPosFunc,flagNegFunc){
 
 
