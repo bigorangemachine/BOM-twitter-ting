@@ -28,6 +28,7 @@
   "dependencies": {
     "GLaDioS": "git://github.com/bigorangemachine/BOM-GLaDioS.js.git#v0.0.3",
     "GenDB": "git://github.com/bigorangemachine/BOM-genDB.git#v0.0.3",
+    "MD5": "^1.3.0",
     "Pourtals": "git://github.com/bigorangemachine/BOM-Pourtals.js.git#v0.0.3",
     "bom-utils": "git://github.com/bigorangemachine/BOM-nodejs-utils.git#v0.0.4",
     "merge": "^1.2.0",

@@ -7,7 +7,6 @@ var _ = require('underscore'),//http://underscorejs.org/
     mysql = require('mysql'),//https://github.com/felixge/node-mysql/
     fs = require('fs'),
     http = require('http'),
-    JiraClient = require('jira-connector'),
     url = require('url'),
     querystring = require('querystring'),
     md5 = require('md5'),
@@ -18,8 +17,8 @@ var _ = require('underscore'),//http://underscorejs.org/
     utils = require('bom-utils'),
     vars = require('bom-utils/vars');
  //custom modules - for WIP
-var statics=statics=require('./static');
-//     vars = require('./jspkg/vars');
+
+
 //varaibles
 var doc_root='',
     root_params={
