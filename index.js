@@ -63,11 +63,27 @@ rootThread.on('init',function(pkg,flagPosFunc,flagNegFunc){
     });
     return connect_result;
 });
+
+
 rootThread.on('start',function(pkg,flagPosFunc,flagNegFunc){
 
 
 });
 
+
+
+
+rootThread.on('exit',function(pkg,flagPosFunc,flagNegFunc){
+    if(!root_params.silent){
+        console.log("\n\n\n================= do_terminate PID: "+process.pid+" =================","\n");}
+    process.on('exit', function(code){
+        if(!root_params.silent){
+            console.log('===PROCESS process.on(\'exit\') EVENT===');
+            console.log("\n================= \\\\do_terminate PID: "+process.pid+" =================","\n\n");
+        }
+    });
+    flagPosFunc();
+},{'priority':1});
 
 
 rootThread.do_init();
