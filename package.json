@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/bigorangemachine/twitter-ting/issues"
   },
-  "homepage": "https://github.com/bigorangemachine/twitter-ting#readme"
+  "homepage": "https://github.com/bigorangemachine/twitter-ting#readme",
+  "dependencies": {
+    "GLaDioS": "git://github.com/bigorangemachine/BOM-GLaDioS.js.git#v0.0.3",
+    "GenDB": "git://github.com/bigorangemachine/BOM-genDB.git#v0.0.3",
+    "Pourtals": "git://github.com/bigorangemachine/BOM-Pourtals.js.git#v0.0.3",
+    "bom-utils": "git://github.com/bigorangemachine/BOM-nodejs-utils.git#v0.0.4",
+    "string.prototype.repeat": "^0.2.0",
+    "mysql": "^2.11.1"
+  }
 }
