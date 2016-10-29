@@ -1,0 +1,22 @@
+{
+  "name": "twitter-ting",
+  "version": "0.0.1",
+  "description": "Twitter Thing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"NO TEST\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigorangemachine/twitter-ting.git"
+  },
+  "keywords": [
+    "Twitter"
+  ],
+  "author": "BOM",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bigorangemachine/twitter-ting/issues"
+  },
+  "homepage": "https://github.com/bigorangemachine/twitter-ting#readme"
+}

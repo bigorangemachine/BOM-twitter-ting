@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 config.js
 node_modules/
 _cache/
@@ -41,4 +41,3 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
->>>>>>> 7e3afb981c3f622487bf44ca4ff9a66dd424fffb
