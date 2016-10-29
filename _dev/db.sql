@@ -20,6 +20,19 @@ CREATE TABLE `watching_criteria`(
 
 
 
+CREATE TABLE `tweets`(
+	`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+	`criteria_id` bigint(20) unsigned NOT NULL,
+    `tweet_text` TEXT NOT NULL,
+    `tweet_html` TEXT NOT NULL,
+	`date_modified` DATETIME NOT NULL DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP,
+	INDEX `criteria_id` (`criteria_id`),
+	PRIMARY KEY (`id`),
+	UNIQUE KEY `id` (`id`)
+)ENGINE = MyISAM;
+
+
+
 
 CREATE TABLE `secondary_table`(
 	`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
