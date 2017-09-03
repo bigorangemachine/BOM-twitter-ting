@@ -71,6 +71,7 @@ module.exports = function(root_params){//dependancies
                                         build_str(err.fileName + ' - Line: '+err.lineNumber+'('+err.columnNumber+')', rowStr);
                                     }else{
                                         for(var s=0;s<stackLines.length;s++){
+											if(!stackLines[s].filepath){continue;}
                                             if(stackLines[s].filepath.indexOf(root_params.doc_root)!==-1){
                                                 build_str(vars.console_chrs.yellow+utils.check_strip_first(stackLines[s].filepath, root_params.doc_root) + vars.console_chrs.clearall + ' - ' +
                                                     vars.console_chrs.bold + 'Line: ' + vars.console_chrs.clearall +
@@ -179,7 +180,8 @@ module.exports = function(root_params){//dependancies
                     process.exit();//true exit!
                 },
                 'SIGINT_inc':0,
-                'SIGINT_max':5, //5 max tries
+                // 'SIGINT_max':5, //5 max tries
+                'SIGINT_max':0, //0 max tries
                 'SIGINT_timeout':10000, //in milliseconds - 10 seconds
                 'date_stamp':new Date(),
                 'status_whitelist':['uninit','active','quitting','done','forced'],

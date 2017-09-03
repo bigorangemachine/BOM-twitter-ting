@@ -4,12 +4,12 @@ config.db = {'type':'mysql','user':'youruser','pass':'yourpass','host':'localhos
 };
 
 config.API={
-    'twitterendpoint':'https://api.twitter.com/1.1/{noun}/',
+    'endpoint':'https://api.twitter.com/1.1/',
     'api_key':'YOUR-API-KEY',
     'secret': 'YOUR-API-SECRET',
-    'qs':'search',
+    'access_token':'YOUR-API-ACCESS-TOKEN',
+    'access_secret':'YOUR-API-ACCESS-SECRET',
     'account_num':'88888'
 };
-//https://yourmainhost.atlassian.net/rest/api/2/project
-config.cachepath='_cache/';//matches the package.json
+config.local_cache='_cache/';
 module.exports = config;

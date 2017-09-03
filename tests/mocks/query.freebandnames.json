@@ -1,0 +1,7 @@
+{
+  "count": 10,
+  "next_results": "?max_id=123456&q=%23freebandnames&count=10&include_entities=1&result_type=mixed",
+  "max_id": 123456,
+  "since_id": 123100,
+  "query": "%23freebandnames"
+}

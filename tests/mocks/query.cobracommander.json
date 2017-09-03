@@ -1,0 +1,7 @@
+{
+  "count": 50,
+  "next_results": "?max_id=7891011&q=%23cobracommander&count=55&include_entities=1&result_type=mixed",
+  "max_id": 7891011,
+  "since_id": 7889021,
+  "query": "%23cobracommander"
+}

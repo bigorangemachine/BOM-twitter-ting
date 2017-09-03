@@ -3,6 +3,8 @@
 CREATE TABLE `criteria_types`(
 	`id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 	`query_type` CHAR(255) NOT NULL,
+	`api_prefix` CHAR(255) NULL,
+	`api_suffix` CHAR(255) NULL,
     FULLTEXT `query_type` (`query_type`),
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `id` (`id`)
@@ -31,6 +33,7 @@ CREATE TABLE `tweets`(
 	UNIQUE KEY `id` (`id`)
 )ENGINE = MyISAM;
 
+INSERT INTO `criteria_types` VALUES ('1', 'hashtag', '#', NULL), ('2', 'quote', '"', '"');
 
 
 

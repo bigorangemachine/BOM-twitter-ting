@@ -10,7 +10,6 @@ var _ = require('underscore'),//http://underscorejs.org/
     url = require('url'),
     querystring = require('querystring'),
     md5 = require('md5'),
-    repeat = require('string.prototype.repeat'),//FOR EASY DEBUGGING :D
     JSON = require('JSON'),
     Pourtals = require('Pourtals')(),
     Paranoia = require('Pourtals/sub/c0re/Paranoia')(),
@@ -29,7 +28,7 @@ var doc_root='',
     };
 try{
     root_params.config=root_params.config;
-    var config=require('./jspkg/configurator')(process, fs, root_params);
+    var config=require('./jspkg/configurator')(root_params);
     doc_root=root_params.doc_root;
 }catch(e){
 

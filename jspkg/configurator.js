@@ -1,5 +1,5 @@
 
-module.exports = function(process, fs, root_params){
+module.exports = function(root_params, argSchema){
     root_params.cmd=process.argv[0]; //info!
     root_params.path=process.argv[1];
 
@@ -16,13 +16,8 @@ module.exports = function(process, fs, root_params){
             base_wrap=['"','\''],
             base_sep='=',
             all_seps=[base_sep],
-            cust_args=[//.arg and .var_set are required!
+            cust_args=argSchema[//.arg and .var_set are required!
                 {'arg':'config','var_set':'root_params.config','split':base_sep,'wrap':base_wrap, 'type':'string'},
-                {'arg':'croncurrent','var_set':'root_params.croncurrent','split':base_sep,'wrap':base_wrap, 'type':'string'},
-                {'arg':'whichnode','var_set':'root_params.whichnode','split':base_sep, 'type':'string'},
-                {'arg':'cronfile','var_set':'root_params.cronfile','split':base_sep, 'type':'string'},
-                {'arg':'logpath','var_set':'root_params.logpath','split':base_sep, 'type':'string'},
-                {'arg':'-doremove','var_set':'root_params.doremove'},
                 {'arg':'-silent','var_set':'root_params.silent'}
             ],
             base_arg_func=function(strIn){
