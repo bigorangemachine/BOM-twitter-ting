@@ -1,40 +1,72 @@
 {
   "name": "twitter-ting",
-  "version": "0.0.1",
-  "description": "Twitter Thing",
+  "description": "Visualizing some aspect of twitter for fun and profit",
   "main": "index.js",
-  "scripts": {
-    "preinstall": "mkdir -p _cache/ && chmod 777 _cache/",
-    "install": "node install.js",
-    "start": "node index.js",
-    "cron": "echo \"\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\nCreating crontab under '$(whoami)'\\n\\nIf you wish to run a cron under a different user use: 'sudo -u not$(whoami) npm run cron'.\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\n\" && node cron-init.js whichnode=$(which node) cronfile=cron.job && crontab cron.job && echo CRONTAB CREATED FOR $(whoami) && echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ && crontab -l && echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
-    "uncron": "echo \"\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\nRemoving crontab under '$(whoami)'\\n\\nIf you wish to remove a cron under a different user use: 'sudo -u not$(whoami) npm run cron'.\\n\\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\n\\n\" && node cron-init.js -doremove whichnode=$(which node) cronfile=cron.job && echo CRONTAB REMOVING FOR $(whoami) && if crontab -l; then echo 'YES'; fi; echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ && if crontab -r; then echo 'REMOVED'; fi; rm cron.job && echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ && if crontab -l; then echo ''; fi; ",
-    "uninstall": "echo NO UNINSTALL",
-    "test": "wget http://ipinfo.io/ip --tries 5 -qO _cache/ip.settings && echo \"$(date +%s)\" >> _cache/ip.settings && node test.js -silent"
-  },
+  "version": "0.0.1",
+  "keywords": [
+    "twitter",
+    "visual"
+  ],
+  "homepage": "http://github.com/username/project-name-username/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigorangemachine/twitter-ting.git"
   },
-  "keywords": [
-    "Twitter"
+  "author": "Author Name <username@gmail.com>",
+  "contributors": [
+    {
+      "name": "Author Name",
+      "email": "username@gmail.com"
+    }
   ],
-  "author": "BOM",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/bigorangemachine/twitter-ting/issues"
-  },
-  "homepage": "https://github.com/bigorangemachine/twitter-ting#readme",
   "dependencies": {
-    "GLaDioS": "git://github.com/bigorangemachine/BOM-GLaDioS.js.git#v0.0.3",
-    "GenDB": "git://github.com/bigorangemachine/BOM-genDB.git#v0.0.3",
     "JSON": "^1.0.0",
-    "MD5": "^1.3.0",
-    "Pourtals": "git://github.com/bigorangemachine/BOM-Pourtals.js.git#v0.0.3",
-    "bom-utils": "git://github.com/bigorangemachine/BOM-nodejs-utils.git#v0.0.4",
+    "Pourtals": "git+https://github.com/bigorangemachine/BOM-Pourtals.js.git#v0.0.4",
+    "GenDB": "git+https://github.com/bigorangemachine/BOM-genDB.git#v0.0.4",
+    "bluebird": "^3.5.0",
+    "bom-utils": "git+https://github.com/bigorangemachine/BOM-nodejs-utils.git#v0.0.7",
+    "emoji-unicode": "^1.0.6",
+    "http": "0.0.0",
+    "md5": "^2.0.0",
     "merge": "^1.2.0",
-    "mysql": "^2.11.1",
-    "string.prototype.repeat": "^0.2.0",
-    "underscore": "^1.8.3"
+    "mysql": "^2.10.0",
+    "node-default-server": "git+https://github.com/bigorangemachine/BOM-default-server.git#v0.0.5",
+    "querystring": "^0.2.0",
+    "twitter": "^1.7.1",
+    "underscore": "^1.8.3",
+    "url": "^0.10.3",
+    "xml": "^1.0.1"
+  },
+  "scripts": {
+    "preinstall": "mkdir -p _cache/ && chmod 777 _cache/",
+    "install": "node install.js",
+    "postinstall": "wget http://ipinfo.io/ip --tries 5 -qO _cache/ip.settings && echo \"$(date +%s)\" >> _cache/ip.settings",
+    "start": "node index.js",
+    "uninstall": "echo NO UNINSTALL",
+    "coverage": "nyc npm run test",
+    "test": "_mocha tests/ --recursive"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "nock": "^9.0.14",
+    "nyc": "^11.1.0",
+    "sinon": "^3.2.0",
+    "sinon-chai": "^2.13.0",
+    "supertest": "^3.0.0"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "json",
+      "text-summary"
+    ],
+    "exclude": [
+      "tests",
+      "node_modules",
+      "coverage"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }
